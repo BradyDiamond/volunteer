@@ -18,10 +18,10 @@
 <form action="/projects/<%= @project.id %>/volunteers" method="post">
   <div class="form-group">
     <label for="name">volunteer name</label>
-    <input id="volunteer_name" name="volunteer_name" class="form-control" type="text">
+    <input id="name" name="name" class="form-control" type="text">
   </div>
   <button type="submit" class="btn">Add volunteer</button>
 </form>
 
-<p><a href="/projects/<%= @project.id %>/edit">edit project</a></p>
+<p><a href="/projects/<%= @project.id %>/edit">Edit Project</a></p>
 <a href="/projects">Return to the project list</a

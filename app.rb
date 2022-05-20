@@ -18,10 +18,6 @@ get('/projects') do
   erb(:projects)
 end
 
-# get('/projects/new') do
-#   erb(:new_project)
-# end
-
 post('/projects') do
   title = params[:title]
   id = params[:id]
@@ -62,20 +58,20 @@ end
 
 post('/projects/:id/volunteers') do
   @project = Project.find(params[:id].to_i())
-  volunteer = Volunteer.new(:name => params[:volunteer_name], :project_id => @project.id, :id => nil)
+  volunteer = Volunteer.new(:name => params[:name], :project_id => @project.id, :id => nil)
   volunteer.save()
   erb(:project)
 end
 
 patch('/projects/:id/volunteers/:volunteer_id') do
   @project = Project.find(params[:id].to_i())
-  volunteer = Volunteer.find(params[:volunteer_id].to_i())
+  volunteer = Volunteer.find(params[:id].to_i())
   volunteer.update(params[:name], @aproject.id)
   erb(:project)
 end
 
 delete('/projects/:id/volunteers/:volunteer_id') do
-  volunteer = Volunteer.find(params[:volunteer_id].to_i())
+  volunteer = Volunteer.find(params[:id].to_i())
   volunteer.delete
   @project = Project.find(params[:id].to_i())
   erb(:project)
