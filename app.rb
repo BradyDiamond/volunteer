@@ -23,7 +23,7 @@ get('/projects/new') do
 end
 
 post('/projects') do
-  title = params[:title]
+  title = params[:project_title]
   id = params[:id]
   project = Project.new(:title => title, :id => nil)
   project.save()
@@ -60,9 +60,9 @@ get('/projects/:id/volunteers/:volunteer_id') do
   erb(:volunteer)
 end
 
-post('projects/:id/volunteers') do
+post('/projects/:id/volunteers') do
   @project = Project.find(params[:id].to_i())
-  volunteer = Volunteer.new(params[:volunteer_name], @project.id, nil)
+  volunteer = Volunteer.new(params[:volunteer_name],:project_id => @project.id, :id => nil)
   volunteer.save()
   erb(:project)
 end

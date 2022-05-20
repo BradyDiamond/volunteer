@@ -1,11 +1,11 @@
-<h4>Project Name: <%= @album.name %></h4>
+<h4>Project Name: <%= @project.title %></h4>
 
 
 <h3>Volunteers</h3>
 
   <% if @project.volunteers %>
     <ul>
-      <% @project.volunteers.each do |Volunteer| %>
+      <% @project.volunteers.each do |volunteer| %>
         <li><a href="/projects/<%= @project.id %>/volunteers/<%= volunteer.id %>"><%= volunteer.name %></a></li>
       <% end %>
     </ul>
@@ -18,10 +18,10 @@
 <form action="/projects/<%= @project.id %>/volunteers" method="post">
   <div class="form-group">
     <label for="name">volunteer name</label>
-    <input id="name" name="song_name" class="form-control" type="text">
+    <input id="volunteer_name" name="volunteer_name" class="form-control" type="text">
   </div>
   <button type="submit" class="btn">Add volunteer</button>
 </form>
 
-<p><a href="/projects/<%= @project.id %>/edit">edit album</a></p>
-<a href="/projects">Return to the project list</a>volunteer
+<p><a href="/projects/<%= @project.id %>/edit">edit project</a></p>
+<a href="/projects">Return to the project list</a
