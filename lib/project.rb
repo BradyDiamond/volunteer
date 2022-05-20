@@ -26,30 +26,4 @@ class Project
     result = DB.exec("INSERT INTO projects (name) VALUES ('#{@name}') RETURNING id;")
     @id = result.first().fetch("id").to_i
   end
-
-  def self.clear
-    DB.exec("DELETE FROM projects *;")
-  end
-
-  def self.find(id)
-    project = DB.exec("SELECT * FROM projects WHERE id = #{id};").first
-    name = project.fetch("name")
-    id = project.fetch("id")
-    Project.new ({:name => name, :id => id})
-  end
-
-  def update(name)
-    @name = name
-    DB.exec("UPDATE projects SET name = '#{name}' WHERE id = #{id}")
-  end
-
-  def delete 
-    DB.exec("DELETE FROM projects WHERE id = #{id}")
-    DB.exec("DELETE FROM songs WHERE project_id = #{@id}")
-  end
-
-  def volunteers
-    volunteer.find_by_project(self.id)
-  end
-
 end
