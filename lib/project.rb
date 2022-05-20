@@ -34,4 +34,8 @@ class Project
     Project.new ({:name => name, :id => id})
   end
 
+  def volunteers
+    volunteer.find_by_project(self.id)
+  end
+
 end
