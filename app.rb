@@ -47,7 +47,7 @@ end
 delete('/projects/:id') do
   @project = Project.find(params[:id].to_i())
   @project.delete()
-  @project = Project.all
+  @projects = Project.all
   erb(:projects)
 end
 
