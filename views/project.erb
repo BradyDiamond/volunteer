@@ -1,0 +1,27 @@
+<h4>Project Name: <%= @album.name %></h4>
+
+
+<h3>Volunteers</h3>
+
+  <% if @project.volunteers %>
+    <ul>
+      <% @project.volunteers.each do |Volunteer| %>
+        <li><a href="/projects/<%= @project.id %>/volunteers/<%= volunteer.id %>"><%= volunteer.name %></a></li>
+      <% end %>
+    </ul>
+  <% else %>
+    <p>There are no volunteers listed for this project yet.</p>
+  <% end %>
+
+<h4>Add a volunteer:</h4>
+
+<form action="/projects/<%= @project.id %>/volunteers" method="post">
+  <div class="form-group">
+    <label for="name">volunteer name</label>
+    <input id="name" name="song_name" class="form-control" type="text">
+  </div>
+  <button type="submit" class="btn">Add song</button>
+</form>
+
+<p><a href="/projects/<%= @projuct.id %>/edit">edit album</a></p>
+<a href="/projectss">Return to the project list</a>
