@@ -18,11 +18,23 @@ class Volunteer
     volunteers = []
     returned_volunteers.each() do |volunteer|
       name = song.fetch("name")
-      volunteer_id = volunteer.fetch("proj_id").to_i
+      volunteer_id = volunteer.fetch("project_id").to_i
       id = volunteer.fetch("id").to_i
       volunteers.push(Volunteer.new({:name => name, :project_id => project_id, :id => id}))
     end
     volunteers
+  end
+  
+  def self.find(id)
+    volunteer = DB.exec("SELECT * FROM volunteers WHERE id = #{id};").first
+    if volunteer
+    name = volunteer.fetch("name")
+    project_id = volunteer.fetch("project_id").to_i
+    id = volunteer.fetch("id").to_i
+    Volunteer.new({:name => name, :project_id => project_id, :id => id})
+    else
+      nil
+    end
   end
 
   def self.find_by_project(project_id)
@@ -30,10 +42,14 @@ class Volunteer
     returned_volunteers = DB.exec("SELECT * FROM volunteers WHERE project_id = #{project_id};")
     returned_volunteers.each() do |volunteer|
       name = volunteer.fetch("name")
-      id = volunteers.fetch("id").to_i
-      songs.push(Volunteer.new({:name => name, :project_id => project_id, :id => id}))
+      id = volunteer.fetch("id").to_i
+      volunteers.push(Volunteer.new({:name => name, :project_id => project_id, :id => id}))
     end
-    songs
+    volunteers
+  end
+
+  def ==(volunteer_to_compare)
+    self.name() == volunteer_to_compare.name()
   end
 
 end
