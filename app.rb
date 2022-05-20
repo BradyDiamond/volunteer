@@ -18,12 +18,12 @@ get('/projects') do
   erb(:projects)
 end
 
-get('/projects/new') do
-  erb(:new_project)
-end
+# get('/projects/new') do
+#   erb(:new_project)
+# end
 
 post('/projects') do
-  title = params[:project_title]
+  title = params[:title]
   id = params[:id]
   project = Project.new(:title => title, :id => nil)
   project.save()
@@ -62,7 +62,7 @@ end
 
 post('/projects/:id/volunteers') do
   @project = Project.find(params[:id].to_i())
-  volunteer = Volunteer.new(params[:volunteer_name],:project_id => @project.id, :id => nil)
+  volunteer = Volunteer.new(:name => params[:volunteer_name], :project_id => @project.id, :id => nil)
   volunteer.save()
   erb(:project)
 end
