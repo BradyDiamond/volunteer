@@ -12,3 +12,4 @@ RSpec.configure do |config|
     DB.exec('DELETE FROM projects *;')
   end
 end
+
