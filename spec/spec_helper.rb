@@ -4,7 +4,8 @@ require "rspec"
 require "pry"
 require "pg"
 
-DB = PG.connect({:dbname => 'volunteer_tracker_test', password: 'epicodus'})
+DB = PG.connect({:dbname => 'volunteer_tracker', password: 'epicodus'})
+
 
 RSpec.configure do |config|
   config.after(:each) do
