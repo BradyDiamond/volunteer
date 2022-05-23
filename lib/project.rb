@@ -1,3 +1,4 @@
+require('pry')
 class Project
   attr_reader :id
   attr_accessor :title
@@ -39,7 +40,7 @@ class Project
   end
 
   def update(title)
-    @title = title
+    @title = title.fetch(:title)
     DB.exec("UPDATE projects SET title = '#{title}' WHERE id = #{id};")
   end
 

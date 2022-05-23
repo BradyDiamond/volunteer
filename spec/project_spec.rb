@@ -79,7 +79,6 @@ describe Project do
       project.save
       project.update({:title => 'Teaching Ruby to Kids', :id => nil})
       expect(project.title).to eq 'Teaching Ruby to Kids'
-      # this is returning a hash...but why?!?!
     end
   end
 
