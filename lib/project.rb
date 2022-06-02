@@ -39,8 +39,8 @@ class Project
     end  
   end
 
-  def update(title)
-    @title = title.fetch(:title)
+  def update(attributes)
+    @title = attributes.fetch(:title)
     DB.exec("UPDATE projects SET title = '#{title}' WHERE id = #{id};")
   end
 
@@ -48,7 +48,6 @@ class Project
     DB.exec("DELETE FROM projects WHERE id = #{id}")
     DB.exec("DELETE FROM volunteers WHERE project_id = #{@id}")
   end
-
 
   def volunteers
     Volunteer.find_by_project(self.id)
